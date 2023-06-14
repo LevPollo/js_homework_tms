@@ -32,7 +32,7 @@ class Timer {
 
         const display = document.createElement("h3");
         display.id = `display-${displayId}`;
-        display.textContent = `${this.hours}:${this.minutes}:${Math.round(this.seconds)}`;
+        display.textContent = `${this.hours.toString().padStart(2,"0")}:${this.minutes.toString().padStart(2,"0")}:${Math.round(this.seconds).toString().padStart(2,"0")}`;
     
         const frame = document.createElement("div");  
         frame.classList.add("timer-div");
@@ -48,7 +48,7 @@ class Timer {
 
 
     secondPlus(){
-        this.seconds += 0.1; 
+        this.seconds += 1; 
         if(this.seconds === 60){
             this.seconds = 0;
             this.minutes += 1;
@@ -83,10 +83,10 @@ const timer = new Timer();
 const timer2 = new Timer();
 
 timer.timerBuilder();
-setInterval(() => timer.timerController(), 100);
+setInterval(() => timer.timerController(), 1000);
 
 timer2.timerBuilder();
-setInterval(() => timer2.timerController(), 100);
+setInterval(() => timer2.timerController(), 1000);
 
 
 
