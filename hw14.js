@@ -13,6 +13,7 @@ class Timer {
         start.classList.add("start-btn");
         start.textContent = "start";
         start.addEventListener("click",function(){
+            console.log(this.stat);
             this.stat = 1; 
         }.bind(this)); 
 
@@ -20,6 +21,7 @@ class Timer {
         stop.classList.add("stop-btn");
         stop.textContent = "stop";
         stop.addEventListener("click", function(){
+            console.log(this.stat);
             this.stat = 2;
         }.bind(this));
 
@@ -27,12 +29,13 @@ class Timer {
         reset.classList.add("reset-btn"); 
         reset.textContent = "reset";
         reset.addEventListener("click", function(){
+            console.log(this.stat);
             this.stat = 0;
         }.bind(this));
 
         const display = document.createElement("h3");
         display.id = `display-${displayId}`;
-        display.textContent = `${this.hours.toString().padStart(2,"0")}:${this.minutes.toString().padStart(2,"0")}:${Math.round(this.seconds).toString().padStart(2,"0")}`;
+        display.textContent = "00:00:00";
     
         const frame = document.createElement("div");  
         frame.classList.add("timer-div");
@@ -50,6 +53,7 @@ class Timer {
     secondPlus(){
         this.seconds += 1; 
         if(this.seconds === 60){
+         
             this.seconds = 0;
             this.minutes += 1;
         }
@@ -80,13 +84,12 @@ class Timer {
 
 
 const timer = new Timer();
-const timer2 = new Timer();
-
 timer.timerBuilder();
-setInterval(() => timer.timerController(), 1000);
 
-timer2.timerBuilder();
-setInterval(() => timer2.timerController(), 1000);
+setInterval(()=>timer.timerController(), 1000);
+
+
+
 
 
 
